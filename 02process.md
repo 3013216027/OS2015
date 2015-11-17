@@ -25,3 +25,10 @@
 	- 引发错误退出(自愿)
 	- 致命错误退出(非自愿, *involuntary*)
 	- 被杀死(非自愿, 注意，信号*9*,*SIGTERM*不可被屏蔽)
+
+- 常用的相关系统调用
+ - `fork()`, `vfork()`
+ - `exec`: `execl()`, `execv()`, `execle()`, `execve()`, `execlp()`, `execvp()`
+ - `wait()`, `waitpid()`
+ - `exit()`
+ - `system()`
