@@ -19,3 +19,21 @@
  |Pending alarms||
  |Signals and signal handlers||
  |Accounting information||
+
+ - *POSIX Threads*
+
+ | 线程调用, Thread call | 功能 |
+ |:---------------------:|:--------------------:|
+ | Pthread_create | 创建新线程 |
+ | Pthread_exit | 结束线程 |
+ | Pthread_join | 等待线程结束 |
+ | Pthread_yield | 释放CPU资源 |
+ | Pthread_attr_init | 创建并初始化一个线程(属性)结构, attribute structure |
+ | Pthread_attr_destroy | 移除线程(属性)结构 |
+
+- 线程的实现
+ - 方案*1*: 在进程中实现，但是，当某个线程缺乏资源时，线程进入`Blocked`，此时会导致整个进程阻塞; 优点是不同的进程的线程可以个性化，采用不同的调度策略.
+ - 方案*2*: 在系统内核中实现，优缺点与上述相反。
+ - 混合方案*3*: 分割用户线程(*User threads*)和内核线程(*Kernel thread*)，若干个用户线程可被分入一个组，由一个内核线程控制.
+
+- *Thread Pop-up* & others~
