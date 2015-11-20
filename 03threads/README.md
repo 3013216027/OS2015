@@ -24,12 +24,12 @@
 
  | 线程调用, Thread call | 功能 |
  |:---------------------:|:--------------------:|
- | Pthread_create | 创建新线程 |
- | Pthread_exit | 结束线程 |
- | Pthread_join | 等待线程结束 |
- | Pthread_yield | 释放CPU资源 |
- | Pthread_attr_init | 创建并初始化一个线程(属性)结构, attribute structure |
- | Pthread_attr_destroy | 移除线程(属性)结构 |
+ | pthread_create | 创建新线程 |
+ | pthread_exit | 结束线程 |
+ | pthread_join | 等待线程结束 |
+ | (!)pthread_yield | 释放CPU资源 |
+ | pthread_attr_init | 创建并初始化一个线程(属性)结构, attribute structure |
+ | pthread_attr_destroy | 移除线程(属性)结构 |
 
 - 线程的实现
  - 方案*1*: 在进程中实现，但是，当某个线程缺乏资源时，线程进入`Blocked`，此时会导致整个进程阻塞; 优点是不同的进程的线程可以个性化，采用不同的调度策略.
