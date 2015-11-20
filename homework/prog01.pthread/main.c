@@ -16,8 +16,8 @@
 #include <unistd.h>
 
 #define NUMBER_OF_THREADS 100
-#define MAX_N 100000000 /* ensure that MAX_N % NUMBER_OF_THREADS = 0 */
-#define MAX_N_SQR 1e16
+#define MAX_N 10000000 /* ensure that MAX_N % NUMBER_OF_THREADS = 0 */
+#define MAX_N_SQR 1e14
 
 /* struct to define how each thread works */
 typedef struct
@@ -73,4 +73,4 @@ main(int argc, char* argv[])
 
 	return 0;
 }
-/* 0.056s */
+/* 0.056s with -O2 option */

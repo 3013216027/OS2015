@@ -11,8 +11,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_N 100000000
-#define MAX_N_SQR 1e16
+#define MAX_N 10000000
+#define MAX_N_SQR 1e14
 
 int
 main(int argc, char* argv[])
