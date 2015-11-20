@@ -1,0 +1,4 @@
+- 执行fork后，如果成功，fork函数给父进程返回子进程PID, 给子进程返回0，否则给父进程返回-1
+- `fork`之后的所有代码，两个进程独立执行，并且变量均有拷贝
+- `printf`的缓冲也可能被复制！参看：
+ - [linux中fork（）函数详解](http://blog.csdn.net/jason314/article/details/5640969)
