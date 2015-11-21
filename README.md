@@ -1,2 +1,3 @@
 # OS2015
-JBer's OS class notes.
+
+JBer's OS course notes & some code(pure C!)
