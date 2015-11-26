@@ -59,3 +59,55 @@
  }
  /* .... */
  ```
+
+### The Readers and Writers Problem
+
+- 读者/写者问题
+ - 有读者和写者，分别读取数据和写入数据
+ - 多个读者可以同时读取数据，因为不会影响数据内容
+ - 多个写者不允许同时写
+ - 读者和写者不能混合操作，有读者在读则不允许写数据，反之亦然
+
+ ```c
+ typedef int semaphore;
+ semaphore mutex = 1;
+ semaphore db = 1;
+ int rc = 0;
+
+ void read()
+ {
+	while (TRUE)
+	{
+		down(&mutex);
+		rc = rc + 1;
+		if (rc == 1)
+		{
+			down(&db);
+		}
+		up(&mutex);
+
+		read_data_base();
+		
+		down(&mutex);
+		rc = rc - 1;
+		if (rc == 0)
+		{
+			up(&db);
+		}
+		up(&mutex);
+
+		use_data_read();
+	}
+ }
+
+ void writer()
+ {
+	 while (TRUE)
+	 {
+		 think_up_data();
+		 down(&db);
+		 write_data_base();
+		 up(&db);
+	 }
+ }
+ ```
