@@ -20,6 +20,33 @@
  semaphore mutex = 1;
  semaphore s[N];
 
+ void test(int i)
+ {
+	 if (state[i] == HUNGRY && state[LEFT] != EATING && state[RIGHT] != EATING)
+	 {
+		 state[i] = EATING;
+		 up(&s[i]);
+	 }
+ }
+
+ void take_forks(int i)
+ {
+	down(&mutex);
+	state[i] = HUNGRY;
+	test(i);
+	up(&mutex);
+	down(&s[i]);
+ }
+
+ void put_forks(int i)
+ {
+	down(&mutex);
+	state[i] = THINKING;
+	test(LEFT);
+	test(RIGHT);
+	up(&mutex);
+ }
+
  void philosopher(int i)
  {
 	while (TRUE)
