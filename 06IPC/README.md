@@ -113,3 +113,24 @@
  ```
 
 - **信号量不是整数，而是包括整数、P/V操作等等的一套编程方法!**
+
+### Mutexes in pthread
+
+| Thread call | Description |
+|:-----------:|:-----------:|
+|pthread_mutex_init|Create a mutex|
+|pthread_mutex_destroy|Destroy an existing mutex|
+|pthread_mutex_lock|Acquire a lock or block|
+|pthread_mutex_trylock|Acquire a lock or fail|
+|pthread_mutex_unlock|Release a lock|
+|pthread_cond_init|Create a condition variable|
+|pthread_cond_destroy|Destroy a condition variable|
+|pthread_cond_wait|Block waiting for a signal|
+|pthread_cond_signal|Signal another thread and wake it up|
+|pthread_cond_broadcast|Signal multiple threads and wake all of them|
+
+### Others
+
+- Monitors 管程
+- Message Passing 消息传递 => (Java synchronized)
+- Barriers 障碍
