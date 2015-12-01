@@ -1,6 +1,7 @@
 # 06 Inter-Process Communications, IPC, 进程间通信
 
 - 竞争条件: 两个或多个进程读写某些共享数据，而最后的结果取决于子进程运行的精确时序，称为竞争条件
+- 临界区: 对共享内积存进行访问的程序片段称作临界区域或临界区
 
 ### Dining Philosophers Problem
 
