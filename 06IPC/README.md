@@ -3,6 +3,41 @@
 - 竞争条件: 两个或多个进程读写某些共享数据，而最后的结果取决于子进程运行的精确时序，称为竞争条件
 - 临界区: 对共享内积存进行访问的程序片段称作临界区域或临界区
 
+### Peterson解法
+
+```c
+#define FALSE 0
+#define TRUE 1
+#define N	/* 进程数量 */
+
+int turn;	/* 轮到谁? */
+int interested[N] = {0};	/* 初始化0 */
+
+void enter_region(int pid); /* 进程pid为0或1 */
+void leave_region(int pid);
+
+void enter_region(int pid)
+{
+	int other = 1 - pid; /* 另一方 */
+	interested[pid] = TRUE;
+	turn = pid;
+	while (turn == pid && interested[other] == TRUE);
+}
+
+void leave_region(int pid)
+{
+	interested[pid] = FALSE;
+}
+
+/*
+   注意，上述while (turn == pid)的判断是有意义的
+   当两个进程几乎同时enter_region表明他们想进入临界区时，
+   turn会被设置成后来的那个进程的编号，
+   此时先执行turn = pid的进程会因为turn != pid而调出循环，于是可以获得资源，
+   而另一方则进入等待
+ */
+```
+
 ### Dining Philosophers Problem
 
 - 哲学家问题
