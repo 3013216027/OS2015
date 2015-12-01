@@ -65,3 +65,47 @@ leave_region:
 	MOVE REGISTER, #0
 	RET
 ```
+
+### 生产者-消费者问题
+
+```c
+#define TRUE 1
+#define FALSE 0
+
+#define N 100	/* 槽容量 */
+typedef int semaphore	/* 信号量是一种特殊的整型数据，但绝非整数.. */
+semaphore mutex = 1;	/* 控制对临界区的访问 */
+semaphore empty = N;
+semaphore full = 0;
+
+void producer();
+void consumer();
+
+void producer()
+{
+	int item;
+	while (TRUE)
+	{
+		item = produce_item();
+		down(&empty);
+		down(&mutex);
+		insert_item(item);
+		up(&mutex);
+		up(&full);
+	}
+}
+
+void consumer()
+{
+	int item;
+	while (TRUE)
+	{
+		down(&full);
+		down(&mutex);
+		item = remove_item();
+		up(&mutex);
+		up(&empty);
+		consume_item(item);
+	}
+}
+```
