@@ -63,6 +63,6 @@ sem_v(semaphore sem_id) {
 
 static int
 shm_create(int key) {
-	shmget((key_t)key, sizeof(struct shared_use_st), 0666|IPC_CREAT);
+	return shmget((key_t)key, sizeof(struct shared_use_st), 0666|IPC_CREAT);
 }
 

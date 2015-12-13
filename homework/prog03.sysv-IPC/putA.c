@@ -33,11 +33,11 @@ main() {
 		fprintf(stderr, "Failed to create semaphore!\n");
 		exit(EXIT_FAILURE);
 	}
-	if ((dif2 = semget((key_t)KEY_EMPTY, 1, 0666|IPC_CREAT)) == -1) {
+	if ((dif2 = semget((key_t)KEY_FULL, 1, 0666|IPC_CREAT)) == -1) {
 		fprintf(stderr, "Failed to create semaphore!\n");
 		exit(EXIT_FAILURE);
 	}
-	if ((shmid = semget((key_t)KEY_EMPTY, 1, 0666|IPC_CREAT)) == -1) {
+	if ((shmid = semget((key_t)KEY_SHM, 1, 0666|IPC_CREAT)) == -1) {
 		fprintf(stderr, "Failed to create semaphore!\n");
 		exit(EXIT_FAILURE);
 	}

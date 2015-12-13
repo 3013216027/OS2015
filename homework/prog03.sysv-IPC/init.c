@@ -22,24 +22,25 @@ main() {
 	semaphore dif1;
 	semaphore dif2;
 	void* shared_memory = NULL;
-	struct shared_use_st* shared_stuff = NULL;
+	struct shared_use_st* shared_stuff;
 
 	if ((mutex = semget((key_t)KEY_MUTEX, 1, 0666|IPC_CREAT)) == -1) {
-		fprintf(stderr, "Failed to create semaphore!\n");
+		fprintf(stderr, "1Failed to create semaphore!\n");
 		exit(EXIT_FAILURE);
 	}
 	if ((dif1 = semget((key_t)KEY_EMPTY, 1, 0666|IPC_CREAT)) == -1) {
-		fprintf(stderr, "Failed to create semaphore!\n");
+		fprintf(stderr, "2Failed to create semaphore!\n");
 		exit(EXIT_FAILURE);
 	}
-	if ((dif2 = semget((key_t)KEY_EMPTY, 1, 0666|IPC_CREAT)) == -1) {
-		fprintf(stderr, "Failed to create semaphore!\n");
+	if ((dif2 = semget((key_t)KEY_FULL, 1, 0666|IPC_CREAT)) == -1) {
+		fprintf(stderr, "3Failed to create semaphore!\n");
 		exit(EXIT_FAILURE);
 	}
-	if ((shmid = semget((key_t)KEY_EMPTY, 1, 0666|IPC_CREAT)) == -1) {
-		fprintf(stderr, "Failed to create semaphore!\n");
+	if ((shmid = semget((key_t)KEY_SHM, sizeof(struct shared_use_st), 0666|IPC_CREAT)) == -1) {
+		fprintf(stderr, "4Failed to create semaphore!\n");
 		exit(EXIT_FAILURE);
 	}
+	printf("shmid = %d\n", shmid);
 	if ((shared_memory = shmat(shmid, (void*)0, 0)) == (void*)(-1)) {
 		fprintf(stderr, "shmat failed!\n");
 		exit(EXIT_FAILURE);
