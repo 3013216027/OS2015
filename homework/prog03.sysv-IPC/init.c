@@ -36,11 +36,10 @@ main() {
 		fprintf(stderr, "3Failed to create semaphore!\n");
 		exit(EXIT_FAILURE);
 	}
-	if ((shmid = semget((key_t)KEY_SHM, sizeof(struct shared_use_st), 0666|IPC_CREAT)) == -1) {
+	if ((shmid = shmget((key_t)KEY_SHM, sizeof(struct shared_use_st), 0666|IPC_CREAT)) == -1) {
 		fprintf(stderr, "4Failed to create semaphore!\n");
 		exit(EXIT_FAILURE);
 	}
-	printf("shmid = %d\n", shmid);
 	if ((shared_memory = shmat(shmid, (void*)0, 0)) == (void*)(-1)) {
 		fprintf(stderr, "shmat failed!\n");
 		exit(EXIT_FAILURE);
