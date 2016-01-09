@@ -21,7 +21,7 @@
 #define KEY_FULL 102
 #define KEY_EMPTY 101
 #define KEY_SHM 200
-#define BUFFER_SIZE 15
+#define BUFFER_SIZE 10
 
 typedef int semaphore;
 

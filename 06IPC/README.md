@@ -8,7 +8,7 @@
 ```c
 #define FALSE 0
 #define TRUE 1
-#define N	/* 进程数量 */
+#define N 2	/* 进程数量 */
 
 int turn;	/* 轮到谁? */
 int interested[N] = {0};	/* 初始化0 */
